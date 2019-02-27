@@ -1,0 +1,34 @@
+.dashboard {
+    display: flex;
+    width: 70vw;
+    margin: 60px auto;
+}
+
+
+.post-list {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+.post {
+    margin-bottom: 30px;
+    width: 80%;
+    .post__title {
+        @include headTitle;
+    }
+    .post__body {
+        font-weight: 400;
+        margin-bottom: 10px;
+        line-height: 1.1rem;
+    }
+
+    .post__date {
+        font-weight: 300;
+    }
+}
+
+.notification {
+    h2 {
+        @include headTitle
+    }
+}

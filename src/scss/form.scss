@@ -1,0 +1,15 @@
+.signin-container,.signup-container, .create-post-container {
+    width: 50%;
+    padding-top: 120px;
+    margin: 0 auto;
+
+    .title {
+        text-align: center;
+        font-size: 2rem;
+        color: $darkColor;
+        margin-bottom: 30px;
+    }
+    span {
+        color: $significantColor;
+    }
+}

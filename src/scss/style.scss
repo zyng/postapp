@@ -1,0 +1,18 @@
+@import "reset";
+@import "variables";
+@import "mixins";
+
+@import "nav";
+@import "dashboard";
+@import "form";
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: $textColor;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
