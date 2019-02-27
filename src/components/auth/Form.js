@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SignIn from './SignIn'
 import SignUp from './SignUp'
-import CreatePost from '../posts/CreatePost'
+
 
 class Form extends Component {
     state = {

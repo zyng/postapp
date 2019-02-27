@@ -1,19 +1,41 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
 
 const PostDetails = (props) => {
+    const { post } = props;
+    // const postId = props.match.params.id;
 
-    const postId = props.match.params.id;
-    console.log(props);
-
-    return (
-        <div className="post-summary">
-            <div className="post">
-                <div className="post__title">Post title {postId}</div>
-                <div className="post__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio illum voluptas sint inventore. Magni cumque dignissimos possimus culpa. Quo officiis laborum veniam placeat alias earum consectetur corrupti explicabo consequuntur dolorem, nemo inventore facere tenetur pariatur nihil voluptas voluptatibus, culpa, magnam provident nam non! Libero distinctio sequi, doloribus soluta facilis magni laborum quam fuga blanditiis, delectus pariatur, ea culpa! Praesentium asperiores iste quas? Quis facilis earum odit, ipsum molestias atque nesciunt, fuga similique aspernatur quae, accusantium possimus quisquam iste commodi vitae. Delectus quaerat impedit, modi molestiae cumque amet ex praesentium veritatis dolorum eius dignissimos non? Doloremque reprehenderit inventore placeat dicta cupiditate?</div>
-                <div className="post__date">3 December 2018</div>
+    if (post) {
+        return (
+            <div className="post-summary">
+                <div className="post">
+                    <div className="post__title">{post.title}</div>
+                    <div className="post__body">{post.content}</div>
+                    <div className="post__date">{`Posted by  ${post.authorFirstName} ${post.authorLastName} 3 December 2018`} </div>
+                </div>
             </div>
-        </div>
-    );
+        )
+    } else {
+        return (
+            <div className="container center"><p>Loading post...</p></div>
+        )
+    }
 }
 
-export default PostDetails;
+const mapStateToStore = (state, ownProps) => {
+    const id = ownProps.match.params.id;
+    const posts = state.firestore.data.posts;
+    const post = posts ? posts[id] : null;
+    return {
+        post //teraz w porpsach jest wlasciwosc post która przechowuje dane o poscie o pobranym z url id.
+    }
+}
+
+export default compose(
+    connect(mapStateToStore),
+    firestoreConnect([
+        { collection: 'posts' }
+    ])
+)(PostDetails);
