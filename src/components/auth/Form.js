@@ -11,8 +11,6 @@ class Form extends Component {
         email: '',
         password: '',
         passwordConfirm: '',
-        postTitle: '',
-        postText: '',
     }
 
     componentDidUpdate() {
@@ -27,10 +25,7 @@ class Form extends Component {
             console.log(this.state);
         } else if (this.state.type === '/signin') {
             console.log(this.state.email, this.state.password);
-        } else if (this.state.type === '/create') {
-            console.log({ title: this.state.postTitle, content: this.state.postText });
         }
-
     }
 
     handleChange = (e) => {
@@ -47,9 +42,6 @@ class Form extends Component {
                 break;
             case '/signup':
                 formType = <SignUp handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
-                break;
-            case '/create':
-                formType = <CreatePost handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
                 break;
             default:
                 formType = <p>Ups..Something went wrong.</p>

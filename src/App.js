@@ -5,6 +5,7 @@ import Navigation from './components/layout/Navigation'
 import Dashboard from './components/dashboard/Dashboard'
 import PostDetails from './components/posts/PostDetails'
 import Form from './components/auth/Form'
+import CreatePost from './components/posts/CreatePost'
 
 
 class App extends Component {
@@ -19,7 +20,7 @@ class App extends Component {
               <Route path='/post/:id' component={PostDetails} />
               <Route path='/signin' component={Form} />
               <Route path='/signup' component={Form} />
-              <Route path='/create' component={Form} />
+              <Route path='/create' component={CreatePost} />
             </Switch>
           </main>
         </div>
