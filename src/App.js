@@ -4,7 +4,8 @@ import './scss/style.scss'
 import Navigation from './components/layout/Navigation'
 import Dashboard from './components/dashboard/Dashboard'
 import PostDetails from './components/posts/PostDetails'
-import Form from './components/auth/Form'
+import SignIn from './components/auth/SignIn'
+import SignUp from './components/auth/SignUp'
 import CreatePost from './components/posts/CreatePost'
 
 
@@ -18,8 +19,8 @@ class App extends Component {
             <Switch>
               <Route exact path='/' component={Dashboard} />
               <Route path='/post/:id' component={PostDetails} />
-              <Route path='/signin' component={Form} />
-              <Route path='/signup' component={Form} />
+              <Route path='/signin' component={SignIn} />
+              <Route path='/signup' component={SignUp} />
               <Route path='/create' component={CreatePost} />
             </Switch>
           </main>

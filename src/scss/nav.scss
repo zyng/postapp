@@ -38,6 +38,15 @@ nav {
         color: $significantColor;
       }
     }
+    .btn-profile {
+      top: -10px;
+      left: -10px;
+      &:hover {
+        color: $darkColor
+      }
+    }
   }
+
+
 
 }

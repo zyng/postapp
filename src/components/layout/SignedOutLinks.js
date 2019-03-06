@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
 
-const SignedOut = () => {
+const SignedOutLinks = () => {
     return (
         <ul>
             <li> <NavLink exact to='/signin'>Login</NavLink> </li>
@@ -10,4 +10,4 @@ const SignedOut = () => {
     );
 }
 
-export default SignedOut;
+export default SignedOutLinks;

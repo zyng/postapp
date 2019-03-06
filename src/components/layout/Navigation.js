@@ -1,9 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SignedIn from "./SignedIn";
-import SignedOut from "./SignedOut";
+import SignedInLinks from "./SignedInLinks";
+import SignedOutLinks from "./SignedOutLinks";
+import { connect } from 'react-redux'
 
-const Navigation = () => {
+const Navigation = (props) => {
+
+  const links = props.auth.uid ? <SignedInLinks profile={props.profile} /> : <SignedOutLinks />
+
   return (
     <header>
       <nav>
@@ -12,13 +16,17 @@ const Navigation = () => {
         </Link>
 
         <div className="header__action">
-          <SignedIn />
-          <SignedOut />
+          {links}
         </div>
-
       </nav>
     </header>
   );
 };
 
-export default Navigation;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+    profile: state.firebase.profile
+  }
+}
+export default connect(mapStateToProps)(Navigation);

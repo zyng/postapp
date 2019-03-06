@@ -1,7 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { firestoreConnect } from 'react-redux-firebase';
-import { compose } from 'redux';
+import React from 'react'
+import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
+import moment from 'moment'
 
 const PostDetails = (props) => {
     const { post } = props;
@@ -13,7 +14,7 @@ const PostDetails = (props) => {
                 <div className="post">
                     <div className="post__title">{post.title}</div>
                     <div className="post__body">{post.content}</div>
-                    <div className="post__date">{`Posted by  ${post.authorFirstName} ${post.authorLastName} 3 December 2018`} </div>
+                    <div className="post__date">{`Posted by  ${post.authorFirstName} ${post.authorLastName} ${moment(props.post.createdAt.toDate().toString()).calendar()}`} </div>
                 </div>
             </div>
         )

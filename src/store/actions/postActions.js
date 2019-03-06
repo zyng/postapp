@@ -11,11 +11,13 @@ export const createPost = (post) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         // tutaj asynchroniczne zapytania do bazy danych
         const firestore = getFirestore();
+        const profile = getState().firebase.profile;
+        const authorId = getState().firebase.auth.uid;
         firestore.collection('posts').add({
             ...post,
-            authorFirstName: 'Noa',
-            authorLastName: 'Niki',
-            authorId: 123451,
+            authorFirstName: profile.firstName,
+            authorLastName: profile.lastName,
+            authorId: authorId,
             createdAt: new Date()
         }).then(() => {
             dispatch({ type: 'CREATE_POST', post })
